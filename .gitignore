@@ -103,3 +103,6 @@ venv.bak/
 .mypy_cache/
 
 \.DS_Store
+pkiccu.code-workspace
+.prettierignore
+.vscode/

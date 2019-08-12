@@ -38,9 +38,9 @@ Contents:
 ## About
 
 PKICCU _(pronounced 'peek-ih-choo')_ is the "PKI Certificate and CRL Updater".
-PKICCU is a highly configurable utility that downloads PKI certifates, CRLs and
-other files with special support for the US DoD PKI environment. PKICCU can
-create openssl-style certificate bundles which are used with webservers such as
+PKICCU is a highly configurable utility that downloads PKI certificates, CRLs
+and other files with special support for the US DoD PKI environment. PKICCU can
+create openssl-style certificate bundles which are used with web servers such as
 Apache to configure SSL client-certificate validation. PKICCU can also run user
 provided external scripts to integrate the certificate when the update
 operations are complete. Actually, PKICCU can be used whenever you need to
@@ -48,7 +48,7 @@ download some files and then run scripts afterward.
 
 _PKICCU supports Windows, Linux and Mac. Although PKICCU was developed in
 Python, it has been packaged into a single, self-contained, executable program
-that has no external depencencies (not even Python). There is nothing else to
+that has no external dependencies (not even Python). There is nothing else to
 install or configure._
 
 ## Why PKICCU?
@@ -58,10 +58,10 @@ PKICCU can download certs, CRLs and other files from any source, it has special
 support for the DoD PKI environment. The original target environment was US DoD
 websites that update certs and CRLs from the DoD PKI. Since the DoD PKI is one
 of the largest PKIs in the world, they often add new CAs. These new CAs need to
-be configured into other software such as webservers or some users won't be able
-to access their systems. PKICCU helps automate this process so that new CAs are
-integrated into systems automatically. PKICCU handles all the certificate and
-CRL discovery and downloading. All you have to do is provide the scripts to
+be configured into other software such as web servers or some users won't be
+able to access their systems. PKICCU helps automate this process so that new CAs
+are integrated into systems automatically. PKICCU handles all the certificate
+and CRL discovery and downloading. All you have to do is provide the scripts to
 integrate them into your systems.
 
 PKICCU includes features that make it robust and secure. There are many features
@@ -86,9 +86,9 @@ intervals. Each time it runs, it will perform all its configured functions.
 #### Keep Certs and CRL Files Updated
 
 First and foremost, PKICCU downloads certificates and CRLs and keeps a directory
-structure up to date with the most recent files. In the DoD evironment, new CA
-certificates and CRLs are automaticall detected. This is done by querying a DISA
-website(s) that holds all the certs and CRLs issued by DoD. PKICCU can also
+structure up to date with the most recent files. In the DoD environment, new CA
+certificates and CRLs are automatically detected. This is done by querying a
+DISA website(s) that holds all the certs and CRLs issued by DoD. PKICCU can also
 access the DoD JITC test PKI site.
 
 On non-DoD PKIs PKICCU can be configured with URLs to download. These can be
@@ -113,7 +113,7 @@ Specifically the following:
 - SSLCACertificateFile: a list of CA certificates used to validate end user SSL
   client authentication certificates (contains intermediate and root
   certificates)
-- SSLCADNRequestFile: a list of internediate CA certificates used to filter
+- SSLCADNRequestFile: a list of intermediate CA certificates used to filter
   which certificates are presented to the end user during SSL client
   authentication (typically contains only intermediates)
 
@@ -195,11 +195,11 @@ a background process, the progress bars are automatically disabled.
 Logging is configured and documented in the configuration file. By default, a
 log file named `PKICCU_<timestamp>.log` is created in the `./logs` directory.
 The location of the log file as well as the log level are configured in the
-configuration file. A new log file can be created upon each executation (the
+configuration file. A new log file can be created upon each execution (the
 default), of a single log file can be appended to.
 
 ## Getting Help
 
 PKICCU is a tiny open source project and there is no formal technical support
-provided by anyone. However, you can email us at "support AT gradkell DOT
-com" and we might try to help you. `;)`
+provided by anyone. However, you can email us at "support AT gradkell DOT com"
+and we might try to help you. `;)`

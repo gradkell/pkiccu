@@ -1,5 +1,5 @@
-# Copyright 2019 Gradkell Systems, Inc. Author: Mike R. Prevost,
-# mprevost@gradkell.com
+# Copyright 2019 Gradkell Systems, Inc.
+# Author: Mike R. Prevost, mprevost@gradkell.com
 #
 # This file is part of PKICCU.
 #

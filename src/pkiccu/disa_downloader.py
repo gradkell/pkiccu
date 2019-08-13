@@ -21,6 +21,7 @@ from pkiccu.cert_bundler import CertBundler
 from pkiccu.x509_utils import X509Utils
 from pathlib import Path
 from pkiccu.disa_crl_scraper import DisaCrlScraper
+from pkiccu.os_utils import OsUtils
 import tempfile
 from zipfile import ZipFile, is_zipfile
 import shutil
@@ -191,6 +192,10 @@ class DisaDownloader:
         else:
             dl_dir = str(Path(
                 dl_dir) / Path(f"ALLCRLZIP_{datetime.now().replace(microsecond=0).isoformat()}.zip"))
+            # Windows can't have colons in the time part -- invalid filename
+            if OsUtils.is_win():
+                dl_dir = dl_dir.replace(":", "-")
+
             Path(dl_dir).parent.mkdir(parents=True, exist_ok=True)
 
         logging.debug(f"Downloading ALL CRL ZIP to '{str(dl_dir)}'...")

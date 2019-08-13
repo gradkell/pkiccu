@@ -109,7 +109,8 @@ class RunDBsignCrlUpdater:
                 f">>> Running DBsign CRL Updater, command line: {' '.join(cmd_line)}")
             completed = subprocess.run(args=cmd_line,
                                        stdout=sys.stdout,
-                                       stderr=sys.stderr)
+                                       stderr=sys.stderr,
+                                       universal_newlines=True)
             exit_status_return = completed.returncode
         except BaseException as e:
             print(f"Error running DBsign CRL Updater: {str(e)}")

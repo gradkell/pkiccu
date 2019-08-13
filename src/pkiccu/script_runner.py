@@ -56,15 +56,13 @@ class ScriptRunner:
                                            cwd=cwd,
                                            timeout=timeout,
                                            env=env,
-                                           capture_output=True,
-                                           text=True,
+                                           stdout=subprocess.PIPE,
+                                           stderr=subprocess.STDOUT,
+                                           universal_newlines=True,
                                            check=True)
                 if len(completed.stdout) > 0:
                     logging.debug(
-                        f"Process stdout: \n--- BEGIN STDOUT ({name}) ---\n{completed.stdout}--- END STDOUT ({name}) ---")
-                if len(completed.stderr) > 0:
-                    logging.debug(
-                        f"Process stderr: \n--- BEGIN STDERR ({name}) ---\n{completed.stderr}--- END STDERR ({name}) ---")
+                        f"Process output (stdout+stderr): \n--- BEGIN OUTPUT ({name}) ---\n{completed.stdout}--- END OUTPUT ({name}) ---")
                 return completed
             except BaseException as e:
                 logging.exception(f"Error running script '{name}': {str(e)}")

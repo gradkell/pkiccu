@@ -61,7 +61,7 @@ class ScriptRunner:
                                            universal_newlines=True,
                                            check=True)
                 if len(completed.stdout) > 0:
-                    logging.debug(
+                    logging.info(
                         f"Process output (stdout+stderr): \n--- BEGIN OUTPUT ({name}) ---\n{completed.stdout}--- END OUTPUT ({name}) ---")
                 return completed
             except BaseException as e:

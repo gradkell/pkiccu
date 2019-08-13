@@ -26,7 +26,7 @@ exe = EXE(pyz,
           name='run_dbsign_crl_updater',
           debug=False,
           bootloader_ignore_signals=False,
-          strip=True,
+          strip=False,  # strip=False makes it work on Windows.  Dunno why.
           upx=True,
           upx_exclude=[],
           runtime_tmpdir=None,

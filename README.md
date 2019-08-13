@@ -49,6 +49,8 @@ provided external scripts to integrate the certificate when the update
 operations are complete. Actually, PKICCU can be used whenever you need to
 download some files and then run scripts afterward.
 
+PKICCU is free, open-source software licensed under GPL 3.
+
 _PKICCU supports Windows, Linux and Mac. Although PKICCU was developed in
 Python, it has been packaged into a single, self-contained, executable program
 that has no external dependencies (not even Python). There is nothing else to

@@ -40,6 +40,7 @@ class ScriptRunner:
             use_script_cwd = script_def.get("use_script_cwd", False)
             timeout = script_def.get("timeout", None)
             env = {**os.environ, **script_def.get("env", {})}
+            success_return_code = script_def.get("success_return_code", 0)
 
             # make argv[0] relative to the current working directory and not
             # to the script CWD
@@ -48,6 +49,8 @@ class ScriptRunner:
                 if arg0_path.exists():
                     args = [*args]
                     args[0] = str(arg0_path.resolve())
+
+            Path(cwd).mkdir(parents=True, exist_ok=True)
 
             logging.debug(f"Running script '{name}'...")
             try:
@@ -58,11 +61,13 @@ class ScriptRunner:
                                            env=env,
                                            stdout=subprocess.PIPE,
                                            stderr=subprocess.STDOUT,
-                                           universal_newlines=True,
-                                           check=True)
+                                           universal_newlines=True)
                 if len(completed.stdout) > 0:
                     logging.info(
                         f"Process output (stdout+stderr): \n--- BEGIN OUTPUT ({name}) ---\n{completed.stdout}--- END OUTPUT ({name}) ---")
+                if completed.returncode != success_return_code:
+                    raise RuntimeError(
+                        f"non-zero exit code {completed.returncode}")
                 return completed
             except BaseException as e:
                 logging.exception(f"Error running script '{name}': {str(e)}")

@@ -26,7 +26,6 @@ from pkiccu.disa_downloader import DisaDownloader
 from pkiccu.url_downloader import UrlDownloader
 from pkiccu.cert_bundler import CertBundler
 from pkiccu.script_runner import ScriptRunner
-from pkiccu.os_utils import OsUtils
 import tempfile
 import certifi
 import os
@@ -139,9 +138,8 @@ class Main:
         try:
             ts_start = self.get_param(
                 self.config, 'variables._ts_start', datetime.now().replace(microsecond=0).isoformat())
-            filename = f"PKICCU_{ts_start}.log"
-            if OsUtils.is_win():
-                filename = filename.replace(":", "-")
+            # Windows can't have colons in the time part -- invalid filename
+            filename = f"PKICCU_{ts_start}.log".replace(":", "-")
             logging_config = self.get_param(self.config, "logging", {
                 "level": "INFO",
                 "filename": filename,
@@ -149,8 +147,8 @@ class Main:
                 "format": "%(asctime)s;%(levelname)s;%(message)s"
             })
             filename = self.get_param(logging_config, "filename")
-            if OsUtils.is_win():
-                filename = filename.replace(":", "-")
+            # Windows can't have colons in the time part -- invalid filename
+            filename = filename.replace(":", "-")
             Path(filename).parent.mkdir(parents=True, exist_ok=True)
             logging.basicConfig(level=logging.getLevelName(self.get_param(logging_config, "level")),
                                 filename=filename,

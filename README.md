@@ -1,6 +1,6 @@
 <!--
-Copyright 2019 Gradkell Systems, Inc.
-Author: Mike R. Prevost, mprevost@gradkell.com
+Copyright 2019 Gradkell Systems, Inc. Author: Mike R. Prevost,
+mprevost@gradkell.com
 
 This file is part of PKICCU.
 
@@ -29,6 +29,9 @@ Contents:
   - [Generate Certificate Bundles for Apache Web
     Servers](#generate-certificate-bundles-for-apache-web-servers)
 - [What CAN'T PKICCU Do?](#what-cant-pkiccu-do)
+  - [No Root CA certificates from DoD
+    PKI](#no-root-ca-certificates-from-dod-pki)
+  - [Limited Support for Non-DoD PKIs](#limited-support-for-non-dod-pkis)
 - [Using PKICCU](#using-pkiccu)
   - [Configuration](#configuration)
   - [Execution](#execution)
@@ -123,6 +126,8 @@ locations for Apache.
 
 ## What CAN'T PKICCU Do?
 
+#### No Root CA certificates from DoD PKI
+
 PKICCU can't download root CA certs from DISA. This is because DISA doesn't
 publish them, and for good reason. Since root CA certs are explicitly trusted,
 they need to come from a trusted source. Root certificates usually don't change
@@ -130,6 +135,8 @@ and they are not issued frequently. The root certificates can be manually added
 to PKICCU's PKI data directory structure so that they can be used in certificate
 bundles, etc. In DoD, you can probably get the root certificates from a DoD
 Windows computer in the Trusted Certification Authorities certificate store.
+
+#### Limited Support for Non-DoD PKIs
 
 PKICCU cannot automatically discover when new CAs are added to non-DoD PKIs.
 This is because PKICCU uses the DISA PKI website to determine when CA

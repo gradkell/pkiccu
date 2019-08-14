@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 
 # Copyright 2019 Gradkell Systems, Inc. Author: Mike R. Prevost,
+#
 # mprevost@gradkell.com
 #
 # This file is part of PKICCU.
@@ -21,6 +22,7 @@ from pathlib import Path
 import argparse
 import subprocess
 import sys
+import json
 
 
 class RunDBsignCrlUpdater:
@@ -37,6 +39,10 @@ class RunDBsignCrlUpdater:
         parser.add_argument("--java",
                             required=True,
                             help="Java executable")
+
+        parser.add_argument("--java_opts",
+                            default=json.dumps(['-Xmx512M']),
+                            help=f"Java options as a JSON array of strings, e.g. '{json.dumps(['-Xms512M','-Xmx1G'])}', defaults to '{json.dumps(['-Xmx512M'])}'")
 
         parser.add_argument("--jar",
                             required=True,
@@ -101,10 +107,16 @@ class RunDBsignCrlUpdater:
 
         return args_return
 
-    def run_crl_updater(self, java: str, jar: str, config: str, args: list) -> int:
+    def run_crl_updater(self, java: str, java_opts: str, jar: str, config: str, args: list) -> int:
         exit_status_return: int = 0
         try:
-            cmd_line = [java, "-jar", jar, f"--configFile={config}", *args]
+            java_opts_list = []
+            if java_opts:
+                java_opts_list = json.loads(java_opts)
+                if not isinstance(java_opts_list, list):
+                    java_opts_list = []
+            cmd_line = [java, *java_opts_list, "-jar",
+                        jar, f"--configFile={config}", *args]
             print(
                 f">>> Running DBsign CRL Updater, command line: {' '.join(cmd_line)}")
             completed = subprocess.run(args=cmd_line,
@@ -132,6 +144,8 @@ class RunDBsignCrlUpdater:
         print("### IMPORTING CERTS...")
         print("###")
         exit_status_return = self.run_crl_updater(java=self.args.get("java"),
+                                                  java_opts=self.args.get(
+                                                      "java_opts"),
                                                   jar=self.args.get("jar"),
                                                   config=self.args.get(
                                                       "config"),
@@ -154,6 +168,8 @@ class RunDBsignCrlUpdater:
         print("### IMPORTING CRLs...")
         print("###")
         exit_status_return = self.run_crl_updater(java=self.args.get("java"),
+                                                  java_opts=self.args.get(
+                                                  "java_opts"),
                                                   jar=self.args.get("jar"),
                                                   config=self.args.get(
                                                       "config"),
@@ -163,7 +179,7 @@ class RunDBsignCrlUpdater:
     def main(self):
         exit_status_return: int = 0
         self.args = self.parse_args()
-        print(self.args)
+        print(f"Arguments: {self.args}")
         exit_status_certs: int = 0
         exit_status_crls: int = 0
         if self.args.get('cert_dir'):

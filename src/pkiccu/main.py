@@ -49,8 +49,6 @@ class Main:
 
     # initialize this object.  Called from self.main()
     def init(self):
-        # Parse program arguments
-        self.args = ArgUtils.parse()
         # Read config file
         config_fn = self.args.get('config')
         if not config_fn:
@@ -293,6 +291,8 @@ class Main:
     # Primary entry point
     def main(self) -> int:
         exist_status_return: int = 0
+        # Parse program arguments
+        self.args = ArgUtils.parse()
         try:
             # Initialize the main program
             self.init()

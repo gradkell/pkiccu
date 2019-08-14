@@ -17,4 +17,4 @@
 # this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-VERSION = "0.1.0"
+VERSION = "1.0.0"

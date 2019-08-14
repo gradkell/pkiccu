@@ -55,7 +55,7 @@ class Build:
         glob = Path("var").glob("**/*")
         for fn in glob:
             dict_return[str(fn)] = str(Path(root) / fn)
-        for fn in ["README.md", "COPYING", "LICENSE", "COPYRIGHT", "Pipfile", "Pipfile.lock", "build.py", ".gitignore"]:
+        for fn in ["README.md", "COPYING", "LICENSE", "COPYRIGHT", "Pipfile", "Pipfile.lock", "build.py", ".gitignore", ".env"]:
             dict_return[str(fn)] = str(Path(root) / fn)
         return dict_return
 

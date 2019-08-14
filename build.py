@@ -55,13 +55,13 @@ class Build:
         glob = Path("var").glob("**/*")
         for fn in glob:
             dict_return[str(fn)] = str(Path(root) / fn)
-        for fn in ["README.md", "COPYING", "COPYRIGHT", "Pipfile", "Pipfile.lock", "build.py", ".gitignore"]:
+        for fn in ["README.md", "COPYING", "LICENSE", "COPYRIGHT", "Pipfile", "Pipfile.lock", "build.py", ".gitignore"]:
             dict_return[str(fn)] = str(Path(root) / fn)
         return dict_return
 
     def get_bin_files(self, root: str = "") -> dict:
         dict_return: dict = {}
-        for fn in ["README.md", "COPYING", "COPYRIGHT"]:
+        for fn in ["README.md", "COPYING", "LICENSE", "COPYRIGHT"]:
             dict_return[str(fn)] = str(Path(root) / fn)
         dict_return[f"dist/pkiccu{self.exe_ext}"] = str(
             Path(root) / f"pkiccu{self.exe_ext}")

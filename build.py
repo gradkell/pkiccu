@@ -97,6 +97,7 @@ class Build:
         self.make_zip(f"dist/{prefix}_{self.platform}.zip", fn_dict)
         os.remove(Path(f"dist/pkiccu{self.exe_ext}"))
         os.remove(Path(f"dist/run_dbsign_crl_updater{self.exe_ext}"))
+        shutil.rmtree("./build")
 
     def main(self) -> int:
         prefix: str = f"{PROG_NAME}_{VERSION}"

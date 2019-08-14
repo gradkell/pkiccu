@@ -56,6 +56,9 @@ Python, it has been packaged into a single, self-contained, executable program
 that has no external dependencies (not even Python). There is nothing else to
 install or configure._
 
+**The latest release, including source and binary releases can be downloaded here:**
+- **[https://github.com/gradkell/pkiccu/releases/latest](https://github.com/gradkell/pkiccu/releases/latest)**
+
 ## Why PKICCU?
 
 PKICCU helps websites keep their certificates and CRLs up to date. Although

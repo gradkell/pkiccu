@@ -1,4 +1,5 @@
 # Copyright 2019 Gradkell Systems, Inc.
+#
 # Author: Mike R. Prevost, mprevost@gradkell.com
 #
 # This file is part of PKICCU.
@@ -42,8 +43,8 @@ class ScriptRunner:
             env = {**os.environ, **script_def.get("env", {})}
             success_return_code = script_def.get("success_return_code", 0)
 
-            # make argv[0] relative to the current working directory and not
-            # to the script CWD
+            # make argv[0] relative to the current working directory and not to
+            # the script CWD
             if not use_script_cwd:
                 arg0_path = Path(args[0])
                 if arg0_path.exists():

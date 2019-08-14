@@ -1,4 +1,5 @@
 # Copyright 2019 Gradkell Systems, Inc.
+#
 # Author: Mike R. Prevost, mprevost@gradkell.com
 #
 # This file is part of PKICCU.
@@ -35,8 +36,8 @@ class ArgUtils:
     def parse() -> dict:
         args_return = {}
         prog = Path(sys.argv[0]).name
-        parser = argparse.ArgumentParser(prog=prog,
-                                         description=ArgUtils.PROD_DESC)
+        parser = argparse.ArgumentParser(
+            prog=prog, description=ArgUtils.PROD_DESC)
 
         parser.add_argument("-c", "--config",
                             default="./pkiccu.cfg",
@@ -63,10 +64,7 @@ class ArgUtils:
         parser.add_argument("--noprogress",
                             action="store_true",
                             help="Do not show progress bars (defaults to auto mode)")
-
         _args = parser.parse_args()
-
         if _args:
             args_return = vars(_args)
-
         return args_return

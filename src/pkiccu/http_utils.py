@@ -1,4 +1,5 @@
 # Copyright 2019 Gradkell Systems, Inc.
+#
 # Author: Mike R. Prevost, mprevost@gradkell.com
 #
 # This file is part of PKICCU.
@@ -74,13 +75,10 @@ class HttpUtils:
         """
         Makes a GET or POST request to URL returning response object
 
-        Parameters:
-        url (str): Request URL
-        method (str): GET or POST
-        data (Dict): Post data
+        Parameters: url (str): Request URL method (str): GET or POST data
+        (Dict): Post data
 
-        Returns:
-        str: The text content of the request or None
+        Returns: str: The text content of the request or None
         """
         response_return = None
 
@@ -104,13 +102,10 @@ class HttpUtils:
         """
         Makes a GET or POST request to URL returning the text content of the URL
 
-        Parameters:
-        url (str): Request URL
-        method (str): GET or POST
-        data (Dict): Post data
+        Parameters: url (str): Request URL method (str): GET or POST data
+        (Dict): Post data
 
-        Returns:
-        str: The text content of the request or None
+        Returns: str: The text content of the request or None
         """
         strReturn = None
 

@@ -1,4 +1,5 @@
 # Copyright 2019 Gradkell Systems, Inc.
+#
 # Author: Mike R. Prevost, mprevost@gradkell.com
 #
 # This file is part of PKICCU.
@@ -96,8 +97,8 @@ class DisaDownloader:
 
     def download_certs(self, noprogress: bool = None, check_hash: bool = True, check_parse: bool = True):
         ca_names = self.disa_crl_scraper.get_ca_names()
-        # doing it this way makes lots of requests.
-        # the other way is to use their naming convention for cert files
+        # doing it this way makes lots of requests. the other way is to use
+        # their naming convention for cert files
         if not ca_names:
             raise RuntimeError("Could not get CA names list from DISA")
         else:
@@ -143,8 +144,8 @@ class DisaDownloader:
 
     def download_crls(self, noprogress: bool = None, check_parse: bool = True):
         ca_names = self.disa_crl_scraper.get_ca_names()
-        # doing it this way makes lots of requests.
-        # the other way is to use their naming convention for cert files
+        # doing it this way makes lots of requests. the other way is to use
+        # their naming convention for cert files
         with tqdm(total=len(ca_names), desc="Downloading...", unit="CRLs", disable=noprogress, smoothing=0.1) as pbar:
             for ca in ca_names:
                 try:

@@ -1,4 +1,5 @@
 # Copyright 2019 Gradkell Systems, Inc.
+#
 # Author: Mike R. Prevost, mprevost@gradkell.com
 #
 # This file is part of PKICCU.
@@ -17,8 +18,8 @@
 
 
 """
-The disa_crl_scraper module contains the DisaCrlScraper which contains utilities for listing and downloading
-certs and CRLs from DISA
+The disa_crl_scraper module contains the DisaCrlScraper which contains utilities
+for listing and downloading certs and CRLs from DISA
 """
 
 #from typing import Callable
@@ -59,8 +60,7 @@ class DisaCrlScraper:
         """ 
         Gets the CA list by scraping DISA's website.
 
-        Returns:
-        dict: a dictionary of CA name => CA DN
+        Returns: dict: a dictionary of CA name => CA DN
         """
         dict_return = None
 
@@ -84,8 +84,7 @@ class DisaCrlScraper:
                             self.ca_filename_to_name = {self.name_to_filename(
                                 name): name for name in self.ca_info.keys()}
 
-                            # TODO: DELETE ME
-                            #self.ca_info.pop("DOD ID CA-50")
+                            # TODO: DELETE ME self.ca_info.pop("DOD ID CA-50")
 
                             dict_return = self.ca_info
             except BaseException as e:
@@ -120,12 +119,11 @@ class DisaCrlScraper:
         """ 
         Gets the CA cert and CRL download URLs by scraping DISA's website.
 
-        Parameters:
-         ca (str): the DN of the CA as returned by get_ca_list()
+        Parameters: ca (str): the DN of the CA as returned by get_ca_list()
 
-        Returns:
-        dict: A dictionary whose values are URLs for downloading cert and crls.  The keys
-        can be cert, crl, crl_gzip, or crl_zip.  "crl_zip" only seems to be there for ALL CRLS ZIP.
+        Returns: dict: A dictionary whose values are URLs for downloading cert
+        and crls.  The keys can be cert, crl, crl_gzip, or crl_zip.  "crl_zip"
+        only seems to be there for ALL CRLS ZIP.
         """
         self.get_ca_list()
 
@@ -245,13 +243,13 @@ class DisaCrlScraper:
         ca_details = self.get_ca_details("ALL CRL ZIP")
         url = ca_details.get('crl_zip')
 
-        # print("NOTICE: DUMMY FILE USED -- NOT REAL DOWNLOAD")
-        # if url.find("nit") > 0:
-        #     url = "https://download.dbsign.com/tmp/updates/misc/ALLCRLZIP_JITC.zip"
-        # else:
-        #     url = "https://download.dbsign.com/tmp/updates/misc/ALLCRLZIP_PROD.zip"
-        # url = "https://httpbin.org/status/500"
-        # url = "https://httpbin.org/delay/15"
+        # print("NOTICE: DUMMY FILE USED -- NOT REAL DOWNLOAD") if
+        # url.find("nit") > 0: url =
+        # "https://download.dbsign.com/tmp/updates/misc/ALLCRLZIP_JITC.zip"
+        # else: url =
+        # "https://download.dbsign.com/tmp/updates/misc/ALLCRLZIP_PROD.zip" url
+        # = "https://httpbin.org/status/500" url =
+        # "https://httpbin.org/delay/15"
 
         if url:
             return self.http_utils.downloadBinaryFile(

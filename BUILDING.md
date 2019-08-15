@@ -46,8 +46,8 @@ Other dependencies are installed automatically by pipenv.
 _NOTE: it may be possible to build without pipenv, but that's up to you to
 figure out._
 
-You need to start with at least Python 3.6 or higher with pip. If you don't
-have pipenv, it can be installed easily with `pip install pipenv`.
+You need to start with at least Python 3.6 or higher with pip. If you don't have
+pipenv, it can be installed easily with `pip install pipenv`.
 
 ## Build procedures
 
@@ -87,7 +87,10 @@ executable files. Then it packages up the required files in ZIPs. To build
 binary releases for multiple platforms, you must run build PKICCU on each
 platform. This is just the way pyinstaller works._
 
-If there are errors, you'll just have to work with it and figure it out.
+If there are errors, you'll just have to work with it and figure it out. Any
+errors would probably come from pyinstaller and you'd have to research those
+errors on your own. The rest of build.py just makes the release distribution
+zip files. If you think there is a PKICCU bug, please let us know.
 
 #### Examine the Distribution Directory
 

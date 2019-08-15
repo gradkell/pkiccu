@@ -219,4 +219,5 @@ default), of a single log file can be appended to.
 
 PKICCU is a tiny open source project and there is no formal technical support
 provided by anyone. However, you can email us at "support AT gradkell DOT com"
-and we might try to help you. `;)`
+and we might try to help you. `;)`. If you're a DBsign customer with a current
+support contract, then we'll definately help you!

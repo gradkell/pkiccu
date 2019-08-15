@@ -29,8 +29,8 @@ Contents:
   - [Generate Certificate Bundles for Apache Web
     Servers](#generate-certificate-bundles-for-apache-web-servers)
 - [What CAN'T PKICCU Do?](#what-cant-pkiccu-do)
-  - [No Root CA certificates from DoD
-    PKI](#no-root-ca-certificates-from-dod-pki)
+  - [Can't Get Root CA certificates from DoD
+    PKI](#cant-get-root-ca-certificates-from-dod-pki)
   - [Limited Support for Non-DoD PKIs](#limited-support-for-non-dod-pkis)
 - [Using PKICCU](#using-pkiccu)
   - [Configuration](#configuration)
@@ -56,10 +56,13 @@ Python, it has been packaged into a single, self-contained, executable program
 that has no external dependencies (not even Python). There is nothing else to
 install or configure._
 
-**The latest release, including source and binary releases can be downloaded here:**
+**The latest release, including source and binary releases can be downloaded
+here:**
+
 - **[https://github.com/gradkell/pkiccu/releases/latest](https://github.com/gradkell/pkiccu/releases/latest)**
 
-If you want to build PKICCU from source, the build instructions are in **[BUILDING.md](BUILDING.md)**.
+If you want to build PKICCU from source, the build instructions are in
+**[BUILDING.md](BUILDING.md)**.
 
 ## Why PKICCU?
 
@@ -133,7 +136,7 @@ locations for Apache.
 
 ## What CAN'T PKICCU Do?
 
-#### No Root CA certificates from DoD PKI
+#### Can't Get Root CA certificates from DoD PKI
 
 PKICCU can't download root CA certs from DISA. This is because DISA doesn't
 publish them, and for good reason. Since root CA certs are explicitly trusted,

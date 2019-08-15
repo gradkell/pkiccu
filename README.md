@@ -59,6 +59,8 @@ install or configure._
 **The latest release, including source and binary releases can be downloaded here:**
 - **[https://github.com/gradkell/pkiccu/releases/latest](https://github.com/gradkell/pkiccu/releases/latest)**
 
+If you want to build PKICCU from source, the build instructions are in **[BUILDING.md](BUILDING.md)**.
+
 ## Why PKICCU?
 
 PKICCU helps websites keep their certificates and CRLs up to date. Although

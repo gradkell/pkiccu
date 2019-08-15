@@ -1,6 +1,6 @@
 <!--
-Copyright 2019 Gradkell Systems, Inc.
-Author: Mike R. Prevost, mprevost@gradkell.com
+Copyright 2019 Gradkell Systems, Inc. Author: Mike R. Prevost,
+mprevost@gradkell.com
 
 This file is part of PKICCU.
 
@@ -45,6 +45,9 @@ Other dependencies are installed automatically by pipenv.
 
 _NOTE: it may be possible to build without pipenv, but that's up to you to
 figure out._
+
+You need to start with at least Python 3.6 or higher with pip. If you don't
+have pipenv, it can be installed easily with `pip install pipenv`.
 
 ## Build procedures
 

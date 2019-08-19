@@ -24,7 +24,8 @@ Contents:
 - [About](#about)
 - [Why PKICCU?](#why-pkiccu)
 - [What Can PKICCU Do?](#what-can-pkiccu-do)
-  - [Keep Certs and CRL Files Updated](#keep-certs-and-crl-files-updated)
+  - [Download Files and Keep Certs and CRL Files
+    Updated](#download-files-and-keep-certs-and-crl-files-updated)
   - [Run Integration Scripts](#run-integration-scripts)
   - [Generate Certificate Bundles for Apache Web
     Servers](#generate-certificate-bundles-for-apache-web-servers)
@@ -79,32 +80,34 @@ integrate them into your systems.
 
 PKICCU includes features that make it robust and secure. There are many features
 to make sure that downloads complete successfully and that the downloaded data
-is correct. PKICCU can perform full certificate validation on SSL certs to
-ensure that the website you are downloading from is genuine. And, since
-downloads sometimes fail, especially for large files, PKICCU will retry the
-download a user configurable number of times before giving up. PKICCU also
-employs several layers of data integrity checks on downloaded data. First, the
-file size of the download is checked against the file size reported by the web
-server when the download started. Additionally, if a file hash code was
-available on the download site (e.g., cert hashes on the DISA PKI sites), the
-downloaded file is hashed and checked against the published has value. On top of
-that, cert and CRL files can be parsed after download is complete to ensure that
-they are valid files.
+is correct. PKICCU can perform full SSL certificate validation to ensure that
+the websites you are downloading from are genuine. And, since downloads
+sometimes fail, especially for large files, PKICCU will retry the download a
+user configurable number of times before giving up. PKICCU also employs several
+layers of data integrity checks on downloaded data. First, the file size of the
+download is checked against the file size reported by the web server when the
+download started. Additionally, if a file hash code was available on the
+download site (e.g., cert hashes on the DISA PKI sites), the downloaded file is
+hashed and checked against the published has value. On top of that, cert and CRL
+files can be parsed after downloading is complete to ensure that they are valid
+files.
 
 PKICCU is designed to as a cron job or scheduled task so that it runs at regular
 intervals. Each time it runs, it will perform all its configured functions.
 
 ## What Can PKICCU Do?
 
-#### Keep Certs and CRL Files Updated
+#### Download Files and Keep Certs and CRL Files Updated
 
 First and foremost, PKICCU downloads certificates and CRLs and keeps a directory
-structure up to date with the most recent files. In the DoD environment, new CA
-certificates and CRLs are automatically detected. This is done by querying a
-DISA website(s) that holds all the certs and CRLs issued by DoD. PKICCU can also
-access the DoD JITC test PKI site.
+structure up to date with the most recent files.
 
-On non-DoD PKIs PKICCU can be configured with URLs to download. These can be
+In the DoD environment, new CA certificates and CRLs are automatically detected.
+This is done by querying the DISA website(s) that holds all the certs and CRLs
+issued by DoD. PKICCU can access both the DoD production PKI site and the JITC
+test PKI site.
+
+For non-DoD PKIs, PKICCU can be configured with URLs to download. These can be
 certs, CRLs, or other files you may need. All these files are available to your
 scripts.
 
@@ -120,8 +123,8 @@ update certs and CRLs in the DBsign digital signature system._
 #### Generate Certificate Bundles for Apache Web Servers
 
 The Apache web server's mod_ssl SSL/TLS implementation uses OpenSSL-style
-certificate bundles to configure various aspects of its SSL subsystem.
-Specifically the following:
+certificate bundles to configure various aspects of its SSL subsystem,
+specifically the following:
 
 - SSLCACertificateFile: a list of CA certificates used to validate end user SSL
   client authentication certificates (contains intermediate and root
@@ -141,17 +144,20 @@ locations for Apache.
 PKICCU can't download root CA certs from DISA. This is because DISA doesn't
 publish them, and for good reason. Since root CA certs are explicitly trusted,
 they need to come from a trusted source. Root certificates usually don't change
-and they are not issued frequently. The root certificates can be manually added
-to PKICCU's PKI data directory structure so that they can be used in certificate
-bundles, etc. In DoD, you can probably get the root certificates from a DoD
-Windows computer in the Trusted Certification Authorities certificate store.
+and they are not issued frequently. The root certificates should be manually
+added to PKICCU's PKI data directory structure so that they can be used in
+certificate bundles, etc. In DoD, you can probably get the root certificates
+from a DoD Windows computer in the _Trusted Certification Authorities_
+certificate store.
 
 #### Limited Support for Non-DoD PKIs
 
 PKICCU cannot automatically discover when new CAs are added to non-DoD PKIs.
 This is because PKICCU uses the DISA PKI website to determine when CA
-certificates are available. And, if DISA changes the way their website works too
-much, then updates to PKICCU will have to be made.
+certificates are available.
+
+_If DISA changes the way their website works too much, then updates to PKICCU
+will have to be made._
 
 ## Using PKICCU
 

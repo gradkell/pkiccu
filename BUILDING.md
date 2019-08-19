@@ -59,7 +59,7 @@ distribution and change directories into the source distribution directory.
 #### Setup the Build Environment with Pipenv
 
 Next, just run `pipenv shell`. This should create a virtual environment and open
-a shell set with the proper environment variable to use the environment.
+a shell set with the proper environment variables to use the environment.
 
 _NOTE: if you aren't using the same version of Python as specified in the
 Pipfile and Pipfile.lock files, you will get a warning from pipenv. You might
@@ -74,7 +74,7 @@ You're build environment is now set up.
 #### Run the build script
 
 PKICCU comes with a build script named `build.py` that builds PKICCU and
-packages source and binary distributions.
+packages the source and binary distributions.
 
 The `build.py` script should be executable on Linux or Mac systems, but if not,
 make it executable with `chmod +x build.py`.
@@ -84,17 +84,17 @@ Next just execute the `build.py` script. On Linux or Mac, you can just run
 
 _The build script runs **[pyinstaller](https://www.pyinstaller.org/)** to create
 executable files. Then it packages up the required files in ZIPs. To build
-binary releases for multiple platforms, you must run build PKICCU on each
-platform. This is just the way pyinstaller works._
+binary releases for multiple platforms, you must build PKICCU on each platform.
+This is just the way pyinstaller works._
 
 If there are errors, you'll just have to work with it and figure it out. Any
 errors would probably come from pyinstaller and you'd have to research those
-errors on your own. The rest of build.py just makes the release distribution
-zip files. If you think there is a PKICCU bug, please let us know.
+errors on your own. The rest of build.py just makes the release distribution zip
+files. If you think there is a PKICCU bug, please let us know.
 
 #### Examine the Distribution Directory
 
-The build script makes distribution directory named "dist" containing two ZIP
+The build script makes a distribution directory named "dist" containing two ZIP
 files:
 
 - **pkiccu\_&lt;version&gt;\_src.zip**: the source distribution
